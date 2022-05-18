@@ -68,28 +68,16 @@ namespace SaleHousing_Chupin_
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = ".xml (*.xml*)|*.xml*";
-            openFileDialog.ShowDialog();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = ".xml (*.xml*)|*.xml*";
+            saveFileDialog.ShowDialog();
 
-            if (openFileDialog.FileName.EndsWith(".xml"))
-            {
-                DialogResult result = MessageBox.Show(
-                "Презаписать файл?",
-                "Внимание!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1,
-                MessageBoxOptions.DefaultDesktopOnly
-                );
+            if (!saveFileDialog.FileName.EndsWith(".xml"))
+                saveFileDialog.FileName += ".xml";
 
-                if (result == DialogResult.Yes)
-                {
-                    File.Delete(openFileDialog.FileName);
-                    _sales.SalesList = _dataBase.Sales;
-                    SerializeXML(_sales,openFileDialog.FileName);
-                }
-            }
+            File.Delete(saveFileDialog.FileName);
+            _sales.SalesList = _dataBase.Sales;
+            SerializeXML(_sales,saveFileDialog.FileName);
         }
 
         private void SerializeXML(Sales sales, string pathFile)
@@ -154,6 +142,24 @@ namespace SaleHousing_Chupin_
         private void button6_Click(object sender, EventArgs e)
         {
             _dataBase.RemoveSaleAt((int)idNumeric.Value);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if ((int)toNumeric.Value < (int)fromNumeric.Value)
+            {
+                MessageBox.Show("Максимальная цена не может быть меньше минимальной!");
+            }
+            else
+            {
+                List<ListViewItem> items = _dataBase.Demand((int)fromNumeric.Value, (int)toNumeric.Value);
+                salesListView.Items.Clear();
+
+                foreach (ListViewItem item in items)
+                {
+                    salesListView.Items.Add(item);
+                }
+            }
         }
     }
 }

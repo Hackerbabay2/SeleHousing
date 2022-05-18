@@ -20,6 +20,21 @@ namespace SaleHousing_Chupin_
             _sales = new List<Sale>();
         }
 
+        public List<ListViewItem> Demand(int from, int to)
+        {
+            List<ListViewItem> items = new List<ListViewItem>();
+
+            for (int i = 0; i < _sales.Count; i++)
+            {
+                if (_sales[i].NeedingPrice >= from && _sales[i].NeedingPrice <= to)
+                {
+                    items.Add(GetDataByIndex(i));
+                }
+            }
+
+            return items;
+        }
+
         public void AddSale(string distrcit, string address, string houseCharacteristic, string apartmentCharacteristic, int needingPrice, string square, string layout, int floor, string conatctDetails)
         {
             _sales.Add(new Sale(CountSales+1,distrcit,address,houseCharacteristic,apartmentCharacteristic,needingPrice,square,layout,floor,conatctDetails));

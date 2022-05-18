@@ -68,9 +68,17 @@ namespace SaleHousing_Chupin_
             this.idNumeric = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.fromNumeric = new System.Windows.Forms.NumericUpDown();
+            this.toNumeric = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.needingPriceNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.floorNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // salesListView
@@ -86,6 +94,7 @@ namespace SaleHousing_Chupin_
             this.layout,
             this.stage,
             this.contactDetails});
+            this.salesListView.GridLines = true;
             this.salesListView.HideSelection = false;
             this.salesListView.Location = new System.Drawing.Point(587, 12);
             this.salesListView.Name = "salesListView";
@@ -149,7 +158,7 @@ namespace SaleHousing_Chupin_
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(137, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Район";
             // 
@@ -165,7 +174,7 @@ namespace SaleHousing_Chupin_
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(137, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Адрес";
             // 
@@ -181,7 +190,7 @@ namespace SaleHousing_Chupin_
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(137, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 17);
+            this.label3.Size = new System.Drawing.Size(150, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Характеристика дома";
             // 
@@ -197,7 +206,7 @@ namespace SaleHousing_Chupin_
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(137, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.Size = new System.Drawing.Size(65, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Площадь";
             // 
@@ -206,7 +215,7 @@ namespace SaleHousing_Chupin_
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(137, 124);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 17);
+            this.label5.Size = new System.Drawing.Size(184, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "Запрашиваемая стоимость";
             // 
@@ -222,7 +231,7 @@ namespace SaleHousing_Chupin_
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(137, 96);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(183, 17);
+            this.label6.Size = new System.Drawing.Size(180, 16);
             this.label6.TabIndex = 7;
             this.label6.Text = "Характеристика квартиры";
             // 
@@ -238,7 +247,7 @@ namespace SaleHousing_Chupin_
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(137, 233);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(155, 17);
+            this.label10.Size = new System.Drawing.Size(151, 16);
             this.label10.TabIndex = 17;
             this.label10.Text = "Координаты заявтеля";
             // 
@@ -247,7 +256,7 @@ namespace SaleHousing_Chupin_
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(137, 205);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 17);
+            this.label11.Size = new System.Drawing.Size(41, 16);
             this.label11.TabIndex = 15;
             this.label11.Text = "Этаж";
             // 
@@ -263,7 +272,7 @@ namespace SaleHousing_Chupin_
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(137, 180);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 17);
+            this.label12.Size = new System.Drawing.Size(88, 16);
             this.label12.TabIndex = 13;
             this.label12.Text = "Планировка";
             // 
@@ -388,7 +397,7 @@ namespace SaleHousing_Chupin_
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(462, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 17);
+            this.label7.Size = new System.Drawing.Size(20, 16);
             this.label7.TabIndex = 30;
             this.label7.Text = "ID";
             // 
@@ -402,12 +411,89 @@ namespace SaleHousing_Chupin_
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(465, 416);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(118, 29);
+            this.button8.TabIndex = 32;
+            this.button8.Text = "Спрос";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // fromNumeric
+            // 
+            this.fromNumeric.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.fromNumeric.Location = new System.Drawing.Point(465, 360);
+            this.fromNumeric.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.fromNumeric.Name = "fromNumeric";
+            this.fromNumeric.Size = new System.Drawing.Size(118, 22);
+            this.fromNumeric.TabIndex = 33;
+            // 
+            // toNumeric
+            // 
+            this.toNumeric.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.toNumeric.Location = new System.Drawing.Point(465, 388);
+            this.toNumeric.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.toNumeric.Name = "toNumeric";
+            this.toNumeric.Size = new System.Drawing.Size(118, 22);
+            this.toNumeric.TabIndex = 34;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(437, 360);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(22, 16);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "от";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(437, 388);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 16);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "до";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(437, 341);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 16);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "Цена";
+            // 
             // SaleHouseing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1060, 488);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.toNumeric);
+            this.Controls.Add(this.fromNumeric);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.idNumeric);
@@ -443,6 +529,8 @@ namespace SaleHousing_Chupin_
             ((System.ComponentModel.ISupportInitialize)(this.needingPriceNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.floorNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,6 +577,12 @@ namespace SaleHousing_Chupin_
         private System.Windows.Forms.NumericUpDown idNumeric;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.NumericUpDown fromNumeric;
+        private System.Windows.Forms.NumericUpDown toNumeric;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label13;
     }
 }
 
